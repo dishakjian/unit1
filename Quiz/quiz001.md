@@ -8,4 +8,3 @@
 print("hello world")
 ```
 ## Proof of work
-Here is the solution that my solution works
