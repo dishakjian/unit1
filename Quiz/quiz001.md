@@ -16,3 +16,5 @@ for word in words:
 ```
 ## Proof of work
 ![image](https://github.com/user-attachments/assets/2135fe1f-735e-4e37-983a-b3502d8043ac)
+# Flowchart
+![Blank diagram](https://github.com/user-attachments/assets/932e3461-7c7f-4c6d-8cd9-022a3081c54c)
