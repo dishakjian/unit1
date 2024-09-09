@@ -27,3 +27,7 @@ print(f"Is {num} a perfect number? {is_perfect}")
 ```
 # Proof code works
 ![image](https://github.com/user-attachments/assets/d535fb4b-0c65-4fc2-8cc7-a8f65674c6f7)
+
+# Flow diagram
+![Blank diagram (3)](https://github.com/user-attachments/assets/9434fbd7-326a-4f3a-b654-19d3be21e4f0)
+
