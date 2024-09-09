@@ -33,3 +33,6 @@ for i in range(len(in_protein)):
 print("Complementary sequence:", out_protein)
 
 ```
+# Flow diagram
+![Blank diagram (2)](https://github.com/user-attachments/assets/c08058d9-6bbd-430d-a740-6ee1f608800b)
+
