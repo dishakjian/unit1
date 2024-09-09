@@ -16,3 +16,6 @@ print(check_sum_or_20(num1, num2))
 ```
 ## Proof of work
 ![image](https://github.com/user-attachments/assets/a58e54d2-2fcf-4218-89f7-7adc9f0181a5)
+
+# Flow diagram
+![Blank diagram (1)](https://github.com/user-attachments/assets/ce6eb2dd-def3-48bc-b5a9-c754e3c9d06e)
