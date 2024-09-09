@@ -6,5 +6,13 @@
 
 ## Code
 ```.py
+word=input("enter a number")
+words=word.split()
+for word in words:
+  if len(word)>=3:
+    print(word[0],len(word)-2,word[-1],sep="",end="")
+  else
+    print(word,end="")
 ```
 ## Proof of work
+![image](https://github.com/user-attachments/assets/2135fe1f-735e-4e37-983a-b3502d8043ac)
