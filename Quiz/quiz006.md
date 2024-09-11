@@ -1,3 +1,6 @@
+# Paper solution
+![photo_2024-09-12_08-39-17](https://github.com/user-attachments/assets/d6d6b96d-17d3-4fb7-a8dc-5436ece8423a)
+
 # This program will generate random secure passwords
 # Code
 ```.py
