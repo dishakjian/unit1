@@ -1,0 +1,24 @@
+# Code
+```.py
+def hamming(m, k, p):
+    n = len(m)
+    t = [-1] * (n + k)
+#fill the message bits
+    x = 0  #index for message bits
+
+    for i in range(len(t)):
+        if i not in p:
+            t[i] = int(m[x])
+            x += 1
+
+    print("Encoded message with parity placeholders:", t)
+    return t
+
+m = '1011'
+k = 3
+p = [0, 1, 3]
+
+encoded_message = hamming(m, k, p)
+```
+# Proof the code works
+![image](https://github.com/user-attachments/assets/27c5fab8-ae10-4561-9bdb-99b54b3b5c21)
