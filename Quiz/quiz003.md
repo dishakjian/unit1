@@ -1,3 +1,6 @@
+# Paper solution
+![photo_2024-09-12_08-36-30](https://github.com/user-attachments/assets/ba251ced-dda9-4ac2-bf93-a1c67d27aecc)
+
 # Program description
 This code converts a DNA sequence into its complementary sequence.
 # SL
