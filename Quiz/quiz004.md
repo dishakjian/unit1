@@ -1,3 +1,6 @@
+# Paper solution
+![photo_2024-09-12_08-38-11](https://github.com/user-attachments/assets/1b06aed3-e1c3-462e-b97e-28b11947f47b)
+
 # Program description
 This code prompts the user to input a number, validates that the input is a valid positive integer, and then finds all the factors of the number. It also checks if the number is a perfect number, which is a number equal to the sum of its proper divisors (excluding the number itself). The code then outputs the list of factors and whether the number is a perfect number (True or False).
 # Code
