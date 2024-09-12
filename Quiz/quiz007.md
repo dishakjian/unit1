@@ -1,3 +1,6 @@
+# Paper solution
+![photo_2024-09-13_00-24-03](https://github.com/user-attachments/assets/93b3fef3-79f9-4f27-bc61-655e2c9dd43c)
+
 # Code
 ```.py
 def hamming(m, k, p):
