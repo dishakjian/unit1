@@ -25,3 +25,5 @@ encoded_message = hamming(m, k, p)
 ```
 # Proof the code works
 ![image](https://github.com/user-attachments/assets/27c5fab8-ae10-4561-9bdb-99b54b3b5c21)
+# Flow diagram
+![Blank diagram (5)](https://github.com/user-attachments/assets/f55b7791-705d-462c-ab98-475e18aabdc0)
