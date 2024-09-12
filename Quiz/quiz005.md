@@ -50,3 +50,7 @@ print(sum_of_characters("Computer SCIENCE"))
 ```
 # Proof code works
 ![image](https://github.com/user-attachments/assets/812712b3-6107-4466-a81d-09ed040b6758)
+
+# Flow diagram
+![Blank diagram (4)](https://github.com/user-attachments/assets/7c27aba5-4f86-482d-8e22-56bb21b541a3)
+
