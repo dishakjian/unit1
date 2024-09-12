@@ -53,3 +53,5 @@ if __name__ == "__main__":
 ```
 # Proof code works
 ![image](https://github.com/user-attachments/assets/d11b8303-5921-484f-babc-0541679982b3)
+# Flow diagram
+![image](https://github.com/user-attachments/assets/7b4759eb-c770-46ff-8ebd-78925abb1762)
