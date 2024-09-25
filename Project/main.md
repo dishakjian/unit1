@@ -1,4 +1,4 @@
-# Criteria A: Planning
+# Criterion A: Planning
 ## Problem Definition
 
 My client is **Mr. X**, the Director of IT Security at a large financial institution. The bank’s employees frequently handle sensitive information, and the client is concerned about secure password management. With many employees working remotely and in shared workspaces, traditional password managers could attract attention or be targeted by cyber threats. Mr. X is seeking a **secure, covert solution** for storing passwords that integrate seamlessly into the daily workflow of bank employees without raising suspicion.
