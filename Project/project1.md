@@ -123,7 +123,7 @@ def login():
 
 
 # Post-login functionality
-def user_menu():
+def user_menu(username):
     while True:
         print(f"\n{Colors.HEADER}--- User Menu ---{Colors.ENDC}")
         print(f"{Colors.OKBLUE}1. Add Event{Colors.ENDC}")
@@ -135,13 +135,13 @@ def user_menu():
         choice = input("Enter choice: ").strip()
 
         if choice == "1":
-            add_event()
+            add_event(username)
         elif choice == "2":
-            view_events()
+            view_events(username)
         elif choice == "3":
-            edit_event()
+            edit_event(username)  # You'll also need to modify this function similarly
         elif choice == "4":
-            delete_event()
+            delete_event(username)  # And this one
         elif choice == "5":
             print(f"{Colors.OKGREEN}Logging out...{Colors.ENDC}")
             break
@@ -150,10 +150,10 @@ def user_menu():
 
 
 # Calendar event handling
-def add_event():
+def add_event(username):
     print(f"{Colors.HEADER}--- Add Event ---{Colors.ENDC}")
     while True:
-        date = input("Enter the event date (YYYY-MM-DD): ").strip()  # Full date with year
+        date = input("Enter the event date (YYYY-MM-DD): ").strip()
         event = input("Enter the event description: ").strip()
 
         if not validate_date(date):
@@ -165,47 +165,59 @@ def add_event():
             continue
 
         current_time = datetime.now().strftime('%H:%M')
-        current_date = datetime.now().strftime('%Y-%m-%d')  # Current full date
+        current_date = datetime.now().strftime('%Y-%m-%d')
 
         if date == current_date and event == current_time:
             print(banner2)
-            password_manager()
+            password_manager(username)
             break
 
         with open('cal.csv', mode='a', newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([date, event])
+            writer.writerow([username, date, event])  # Include username
         print(f"{Colors.OKGREEN}Event added successfully!{Colors.ENDC}")
         break
 
 
 
-def view_events():
+def view_events(username):
     print(f"{Colors.HEADER}--- View Events ---{Colors.ENDC}")
     try:
         with open('cal.csv', mode='r') as file:
             reader = csv.reader(file)
             events_found = False
             for i, row in enumerate(reader, start=1):
-                print(f"{Colors.OKCYAN}{i}. Date: {row[0]}, Event: {row[1]}{Colors.ENDC}")
-                events_found = True
+                if row[0] == username:  # Check if the event belongs to the logged-in user
+                    print(f"{Colors.OKCYAN}{i}. Date: {row[1]}, Event: {row[2]}{Colors.ENDC}")
+                    events_found = True
             if not events_found:
                 print(f"{Colors.WARNING}No events found.{Colors.ENDC}")
     except FileNotFoundError:
         print(f"{Colors.FAIL}No events file found!{Colors.ENDC}")
 
 
-def edit_event():
+def edit_event(username):
     print(f"{Colors.HEADER}--- Edit Event ---{Colors.ENDC}")
-    view_events()
+    view_events(username)
     try:
         event_number = int(input("Enter the event number to edit: ").strip())
         with open('cal.csv', mode='r') as file:
             events = list(csv.reader(file))
-        if 1 <= event_number <= len(events):
+
+        # Filter events for the current user
+        user_events = [event for event in events if event[0] == username]
+
+        if 1 <= event_number <= len(user_events):
             new_date = input("Enter new date (YYYY-MM-DD): ").strip()
             new_event = input("Enter new event description: ").strip()
-            events[event_number - 1] = [new_date, new_event]
+            user_events[event_number - 1][1] = new_date
+            user_events[event_number - 1][2] = new_event
+
+            # Update the original events list with modified user events
+            for index, event in enumerate(events):
+                if event[0] == username and index < len(user_events):
+                    events[index] = user_events[index]
+
             with open('cal.csv', mode='w', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerows(events)
@@ -216,15 +228,51 @@ def edit_event():
         print(f"{Colors.FAIL}Error updating event!{Colors.ENDC}")
 
 
-def delete_event():
+def edit_event(username):
+    print(f"{Colors.HEADER}--- Edit Event ---{Colors.ENDC}")
+    view_events(username)
+    try:
+        event_number = int(input("Enter the event number to edit: ").strip())
+        with open('cal.csv', mode='r') as file:
+            events = list(csv.reader(file))
+
+        # Filter events for the current user
+        user_events = [event for event in events if event[0] == username]
+
+        if 1 <= event_number <= len(user_events):
+            new_date = input("Enter new date (YYYY-MM-DD): ").strip()
+            new_event = input("Enter new event description: ").strip()
+            user_events[event_number - 1][1] = new_date
+            user_events[event_number - 1][2] = new_event
+
+            # Update the original events list with modified user events
+            for index, event in enumerate(events):
+                if event[0] == username and index < len(user_events):
+                    events[index] = user_events[index]
+
+            with open('cal.csv', mode='w', newline='') as file:
+                writer = csv.writer(file)
+                writer.writerows(events)
+            print(f"{Colors.OKGREEN}Event updated successfully!{Colors.ENDC}")
+        else:
+            print(f"{Colors.FAIL}Invalid event number!{Colors.ENDC}")
+    except (ValueError, IndexError):
+        print(f"{Colors.FAIL}Error updating event!{Colors.ENDC}")
+
+
+def delete_event(username):
     print(f"{Colors.HEADER}--- Delete Event ---{Colors.ENDC}")
-    view_events()
+    view_events(username)
     try:
         event_number = int(input("Enter the event number to delete: ").strip())
         with open('cal.csv', mode='r') as file:
             events = list(csv.reader(file))
-        if 1 <= event_number <= len(events):
-            del events[event_number - 1]
+
+        # Filter events for the current user
+        user_events = [event for event in events if event[0] == username]
+
+        if 1 <= event_number <= len(user_events):
+            del events[events.index(user_events[event_number - 1])]  # Remove the event from original list
             with open('cal.csv', mode='w', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerows(events)
@@ -250,7 +298,6 @@ def generate_password():
         digits[random.randint(0, len(digits) - 1)],
         symbols[random.randint(0, len(digits) - 1)]
     ]
-
 
     # Fill the rest of the password with random characters
     for _ in range(len(password_chars), 12):
@@ -278,7 +325,7 @@ def evaluate_password_strength(password):
 
 
 # Password Manager with XOR encryption and password strength evaluation
-def password_manager():
+def password_manager(username):
     key = 123  # Simple XOR encryption key
 
     while True:
@@ -291,7 +338,6 @@ def password_manager():
         choice = input("Enter choice: ").strip()
 
         if choice == "1":
-            # Manually add a password
             website = input("Enter website: ").strip()
             account = input("Enter account name: ").strip()
             password = input("Enter password (leave blank to generate a random one): ").strip()
@@ -306,7 +352,7 @@ def password_manager():
             encrypted_password = xor_encrypt_decrypt(password, key)
             with open('passwords.csv', mode='a', newline='') as file:
                 writer = csv.writer(file)
-                writer.writerow([website, account, encrypted_password])
+                writer.writerow([username, website, account, encrypted_password])  # Include username
             print(f"{Colors.OKGREEN}Password added successfully!{Colors.ENDC}")
 
         elif choice == "2":
@@ -314,40 +360,39 @@ def password_manager():
                 with open('passwords.csv', mode='r') as file:
                     passwords = list(csv.reader(file))
 
-                # Display only the website names, hiding the passwords
+                # Display only the passwords associated with the logged-in user
                 for i, row in enumerate(passwords, start=1):
-                    print(f"{Colors.OKCYAN}{i}. Website: {row[0]} | Account: {row[1]}{Colors.ENDC}")
+                    if row[0] == username:  # Check if the password belongs to the logged-in user
+                        print(f"{Colors.OKCYAN}{i}. Website: {row[1]} | Account: {row[2]}{Colors.ENDC}")
 
                 # Ask user to select a website to view its password
                 website_number = int(input("Enter the number of the website to view password: ").strip())
-                if 1 <= website_number <= len(passwords):
-                    encrypted_password = passwords[website_number - 1][2]
+                if 1 <= website_number <= len(passwords) and passwords[website_number - 1][0] == username:
+                    encrypted_password = passwords[website_number - 1][3]
                     decrypted_password = xor_encrypt_decrypt(encrypted_password, key)
                     print(
-                        f"{Colors.OKGREEN}Password for {passwords[website_number - 1][1]} on {passwords[website_number - 1][0]}: {decrypted_password}{Colors.ENDC}")
+                        f"{Colors.OKGREEN}Password for {passwords[website_number - 1][2]} on {passwords[website_number - 1][1]}: {decrypted_password}{Colors.ENDC}")
                 else:
                     print(f"{Colors.FAIL}Invalid website number!{Colors.ENDC}")
             except FileNotFoundError:
                 print(f"{Colors.FAIL}No passwords found!{Colors.ENDC}")
 
         elif choice == "3":
-            # Delete password
+            # Similar to the view functionality but checks for username
             try:
                 with open('passwords.csv', mode='r') as file:
                     passwords = list(csv.reader(file))
 
-                # Display available passwords
+                # Display available passwords for the user
                 for i, row in enumerate(passwords, start=1):
-                    print(f"{Colors.OKCYAN}{i}. Website: {row[0]} | Account: {row[1]}{Colors.ENDC}")
+                    if row[0] == username:  # Show only the logged-in user's passwords
+                        print(f"{Colors.OKCYAN}{i}. Website: {row[1]} | Account: {row[2]}{Colors.ENDC}")
 
                 # Ask user to select a password to delete
                 website_number = int(input("Enter the number of the website to delete: ").strip())
 
-                if 1 <= website_number <= len(passwords):
-                    # Remove selected password
+                if 1 <= website_number <= len(passwords) and passwords[website_number - 1][0] == username:
                     del passwords[website_number - 1]
-
-                    # Write the updated password list back to the file
                     with open('passwords.csv', mode='w', newline='') as file:
                         writer = csv.writer(file)
                         writer.writerows(passwords)
@@ -356,15 +401,11 @@ def password_manager():
                     print(f"{Colors.FAIL}Invalid website number!{Colors.ENDC}")
             except FileNotFoundError:
                 print(f"{Colors.FAIL}No passwords found!{Colors.ENDC}")
-            except ValueError:
-                print(f"{Colors.FAIL}Invalid input! Please enter a number.{Colors.ENDC}")
         elif choice == "4":
             clear_screen()  # Clear screen before exiting
             break
         else:
             print(f"{Colors.FAIL}Invalid choice. Try again.{Colors.ENDC}")
-
-
 
 # Main program flow
 def main():
@@ -378,7 +419,8 @@ def main():
 
         if choice == "1":
             if login():
-                user_menu()  # Show the user menu after successful login
+                username = input("Enter your username: ").strip()  # Get the username after login
+                user_menu(username)  # Show the user menu with username
         elif choice == "2":
             signup()
         elif choice == "3":
