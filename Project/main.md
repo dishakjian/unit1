@@ -82,8 +82,16 @@ img.
 | **Test for Logout System**                     | Unit test       | 1. Login 2. Perform any action 3. Select "Logout"                                                                                                           | Upon selecting logout, the user should be returned to the login screen, ending the session.                                                                                               |
 
 ## Record of tasks
-| Task Number | Planned Action              | Planned Outcome                                                 | Time Estimate | Target Completion Date | Criterion |
-|-------------|-----------------------------|-----------------------------------------------------------------|---------------|------------------------|-----------|
-| 1           | 1st Meeting with the client | Obtained a problem definition, understand what the situation is | 10 min        | Sep 7                  | A         |
-|             |                             |                                                                 |               |                        |           |
-|             |                             |                                                                 |               |                        |           |
+
+| Task Number | Planned Action                   | Planned Outcome                                                                                          | Time Estimated | Target Completion Date | Criterion |
+|-------------|----------------------------------|----------------------------------------------------------------------------------------------------------|----------------|------------------------|-----------|
+| 1           | First meeting with the client    | Obtain a problem definition, understand the situation to propose a solution.                              | 10 min         | Sep 10th               | A         |
+| 2           | Set criteria                     | Develop detailed criteria for the solution that the program will follow to perform all tasks.             | 20 min         | Sep 10th               | A         |
+| 3           | Complete system diagram          | Create a diagram representing the hardware and software components of the calendar-based password manager. | 20 min         | Sep 16th               | B         |
+| 4           | Complete test plan               | Create a table specifying the process for testing the solution with inputs and expected outputs.           | 45 min         | Sep 20th               | B         |
+| 5           | Complete calendar function       | Develop a disguised calendar interface with interactive event features, running on the terminal.           | 150 min        | Sep 24th               | C         |
+| 6           | Complete password manager function | Implement a hidden password manager activated by a secret code, ensuring it follows criteria and passes tests. | 90 min         | Sep 25th               | C         |
+| 7           | Complete 3 flow diagrams         | Diagrams that visually represent how key functions in the calendar and password manager work.              | 45 min         | Sep 26th               | B         |
+| 8           | Record a demonstration           | Provide the client a preview of the product for feedback and adjustments if needed.                       | 20 min         | Sep 26th               | D         |
+| 9           | Finalize record of tasks         | Review and finalize the record of tasks to ensure everything is documented and completed.                  | 10 min         | Sep 27th               | B         |
+
