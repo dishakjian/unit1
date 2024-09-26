@@ -56,13 +56,25 @@ I proposed using a **CSV file** to store the calendar events and encrypted passw
 
 
 # Criterion  B: Design
+## System diagram
+![project1](https://github.com/user-attachments/assets/5b611962-edef-4d84-a1e5-b92cd93a39db)
+This diagram shows the solution's hardware and software components.
 
 ## Flow diagrams for algorithms
-img.
-**fig. 1** this is the flow diagram for the algorithm used to search in the data file... 
+![Algorithm flowchart example (2)](https://github.com/user-attachments/assets/d5bc9276-90e7-42ef-9918-dc9beb691386)
+**fig. 1** This is the flow diagram for the algorithm used to sign users up while validating information and checking uniqueness, and save the information to the database.
+
+![Algorithm flowchart example (1)](https://github.com/user-attachments/assets/35a2d944-3ef4-410d-94da-83ded31e0bd6)
+**fig. 2** This is the flow diagram for the algorithm used to evaluate the strength of a password, both user inputted and generated ones.
+
+![Algorithm flowchart example](https://github.com/user-attachments/assets/9d1c454b-17cc-4c36-83b6-4399a8dd5381)
+**fig. 3**This is the flow diagram for the algorithm used to generate a secure password when the user needs it.
+
 ## Data storage
 
-## Sketches of the application (wireframe diagrams)
+I use CSV files to store data in this product because they allow for easy and convenient access to the information. However, recognizing that CSV files are not inherently secure due to their simplicity and accessibility, I take additional steps to protect sensitive data. The saved passwords are encrypted. I use three CSV files within this product: user.csv, which stores user information, cal.csv which stores calendar events and passwords.csv, which holds saved passwords. 
+
+
 
 ## Test plan
 
