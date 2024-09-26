@@ -7,8 +7,7 @@ My client is **Mr. X**, the Director of IT Security at a large financial institu
 
 ## Proposed Solution
 
-I propose developing a **disguised password manager** in Python, which functions as a simple calendar application. This calendar will allow users to add and manage events while hiding its true purpose—**storing and retrieving passwords securely**—activated only by a secret code. A login and signup system will add an extra layer of security, ensuring only authorized users have access.
-
+I propose to develop **Schedulix**, a disguised password manager in Python, which functions as a simple calendar application. This calendar will allow users to add and manage events while hiding its true purpose—storing and retrieving passwords securely—activated only by a secret code. A login and signup system will add an extra layer of security, ensuring only authorized users have access.
 ### Why Python?
 
 I proposed Python as it is the ideal choice for this project for several reasons:
@@ -53,7 +52,7 @@ I proposed using a **CSV file** to store the calendar events and encrypted passw
 
 ### User Interaction
 
-- The tool will be operated through a **simple terminal-based interface**, allowing users to interact with both the calendar and the password manager modes.
+- The tool will be operated through a **simple terminal-based interface**.
 
 
 # Criterion  B: Design
@@ -66,7 +65,6 @@ img.
 ## Sketches of the application (wireframe diagrams)
 
 ## Test plan
-# Test Plan
 
 | Description                                    | Test Type       | Input                                                                                                                                                      | Expected Outcome                                                                                                                                                                        |
 |------------------------------------------------|-----------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
