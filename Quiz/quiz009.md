@@ -1,4 +1,5 @@
 ## Paper solution
+![photo_2024-10-04_01-23-21](https://github.com/user-attachments/assets/91109faa-4e00-46d1-b7ec-263ebc1f2ba7)
 
 
 ## Flow diagram
