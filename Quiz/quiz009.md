@@ -32,4 +32,5 @@ print(ciphered)
 ```
 
 ## Proof code works
+![image](https://github.com/user-attachments/assets/987e2165-f67b-4a55-b8ed-43363701bed6)
 
